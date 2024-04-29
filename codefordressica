@@ -1,0 +1,113 @@
+#THIS IS SCRIPT.RPY PAGE
+
+# The script of the game goes in this file.
+
+# The game starts here.
+
+transform items:
+    xalign 0.0
+    yalign 0.05
+
+transform tops:
+    xalign 0.20
+    yalign 0.71
+
+transform bots:
+    xalign 0.20
+    yalign 1.07
+
+transform accessories:
+    xalign 0.20
+    yalign 0.55
+
+label start:
+    call screen dressica
+
+   
+
+
+return
+
+#THIS IS THE OPTIONS.RPY PAGE
+
+define config.name = _("DressicaV3")
+
+
+define gui.show_name = True
+
+define config.version = "1.0"
+
+define gui.about = _p("""
+""")
+
+define build.name = "DressicaV3"
+
+
+define config.has_sound = True
+define config.has_music = True
+define config.has_voice = True
+
+
+define config.main_menu_music = "mario.mp3"
+
+
+#THIS IS THE SCREENS.RPY PAGE
+  
+default mtop = 0
+default mbottom = 0
+default macc = 0
+play music "audio/mario.mp3"
+
+screen dressica():
+    add "serc"
+    add "bik.webp" at items
+
+
+    textbutton "Top" action SetVariable("mtop",(mtop) % 3 + 1) xalign 0.86 yalign 0.12:
+        text_size 45
+        text_color "#FFA7EE"
+
+    textbutton "X" action SetVariable("mtop",0) xalign 0.90 yalign 0.12:
+        text_size 30
+        text_color "#2F6BFF"
+    
+    if mtop == 1:
+        add "fl1" at tops
+    elif mtop == 2:
+        add "fl2" at tops
+    elif mtop == 3:
+        add "fl3" at tops
+
+
+    textbutton "Bottom" action SetVariable("mbottom",(mbottom) % 2 + 1) xalign 0.86 yalign 0.36:
+        text_size 45
+        text_color "#FFA7EE"
+
+    textbutton "X" action SetVariable("mbottom",0) xalign 0.90 yalign 0.36:
+        text_size 30
+        text_color "#2F6BFF"
+
+    if mbottom == 1:
+        add "sk1.webp" at bots
+    elif mbottom == 2:
+        add "sk2" at bots
+    elif mbottom == 3:
+        add "sk3" at bots
+
+    
+    textbutton "Accessories" action SetVariable("macc",(macc) % 2 + 1) xalign 0.86 yalign 0.60:
+        text_size 45
+        text_color "#FFA7EE"
+
+    textbutton "X" action SetVariable("macc",0) xalign 0.90 yalign 0.60:
+        text_size 30
+        text_color "#2F6BFF"
+
+    if macc == 1:
+        add "acc1" at accessories
+    elif macc == 2:
+        add "acc2" at accessories
+
+
+#THIS IS THE LINK TO THE TUTORRIAL WE FOLLOWED:
+#https://mikomikisomi.weebly.com/current-projects/how-to-easily-make-a-dress-up-game-in-renpy
